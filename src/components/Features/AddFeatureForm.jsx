@@ -3,7 +3,7 @@ import './AddFeatureForm.css'; // Para estilos específicos
 import Alert from '../Alert/Alert.jsx'; // Importar o componente de alerta
 
 const AddFeatureForm = ({ onAdd }) => {
-  const initialFormState = {
+  const [formData, setFormData] = useState({
     name: '',
     InepCode: '',
     address: '',
@@ -18,27 +18,38 @@ const AddFeatureForm = ({ onAdd }) => {
     internet: '',
     accessible_bathroom: '',
     imageUrl: '',
-  };
-  const [formData, setFormData] = useState(initialFormState);
+  });
+  
   const [error, setError] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null); // Estado para mensagem de sucesso
 
   const handleChange = (e) => {
     const { id, value } = e.target;
-    setFormData({ ...formData, [id]: value });
+    setFormData((prevData) => ({
+      ...prevData,
+      [id]: value,
+    }));
   };
 
-  const validateForm = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Verificações adicionais
     if (Object.values(formData).some(value => value === '')) {
       setError('Todos os campos são obrigatórios');
-      return false;
+      return;
     }
 
     // Validar se campos numéricos contêm apenas números
-    const numberFields = ['InepCode', 'contact', 'employees', 'teachers', 'classrooms', 'students_quantity', 'libraries', 'laboratories'];
+    const numberFields = [
+      'InepCode', 'contact', 'employees', 'teachers', 
+      'classrooms', 'students_quantity', 'libraries', 
+      'laboratories'
+    ];
 
     if (numberFields.some(field => isNaN(Number(formData[field])))) {
       setError('Campos numéricos devem conter apenas números');
-      return false;
+      return;
     }
 
     // Validar URL
@@ -46,45 +57,83 @@ const AddFeatureForm = ({ onAdd }) => {
       new URL(formData.imageUrl); // Tenta criar um objeto URL para verificar se é uma URL válida
     } catch (_) {
       setError('URL da imagem inválida');
-      return false;
+      return;
     }
 
-    return true;
-  };
+    // Preparar dados para envio
+    const payload = {
+      name: formData.name,
+      InepCode: Number(formData.InepCode),
+      address: formData.address,
+      bairro: formData.bairro,
+      contact: Number(formData.contact),
+      employees: Number(formData.employees),
+      teachers: Number(formData.teachers),
+      classrooms: Number(formData.classrooms),
+      students_quantity: Number(formData.students_quantity),
+      libraries: Number(formData.libraries),
+      laboratories: Number(formData.laboratories),
+      internet: formData.internet,
+      accessible_bathroom: formData.accessible_bathroom,
+      imageUrl: formData.imageUrl,
+    };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+    try {
+      const response = await fetch('http://localhost:2727/createSchool', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
 
-    if (!validateForm()) return;
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
 
-    try {const response = await fetch('http://localhost:2727/createSchool', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
-
-    if (!response.ok) {
-      throw new Error(`Erro ao adicionar escola: ${response.statusText}`);
-    }
-
-    onAdd(await response.json());
-      setFormData(initialFormState);
+      const newFeature = await response.json();
+      onAdd(newFeature); // Notificar o componente pai que um novo item foi adicionado
+      setSuccessMessage(`Obrigado por adicionar uma nova escola à nossa API! Você pode ver esse registro clicando no botão: ${newFeature.name || 'Escolas(API)'} no topo da página. Agradecemos sua contribuição`);
+      
+      // Resetar o formulário após o sucesso
+      setFormData({
+        name: '',
+        InepCode: '',
+        address: '',
+        bairro: '',
+        contact: '',
+        employees: '',
+        teachers: '',
+        classrooms: '',
+        students_quantity: '',
+        libraries: '',
+        laboratories: '',
+        internet: '',
+        accessible_bathroom: '',
+        imageUrl: '',
+      });
       setError(null);
     } catch (err) {
-      setError('Erro ao adicionar escola.');
+      setError('Erro ao adicionar dados.');
     }
   };
 
   return (
     <div className="add-feature-form">
       <h2>Adicionar Escola</h2>
+      
+      {/* Exibir alerta de erro, se houver */}
       <Alert message={error} onClose={() => setError(null)} />
+      
+      {/* Exibir alerta de sucesso, se houver */}
+      <Alert message={successMessage} onClose={() => setSuccessMessage(null)} />
+
       <form onSubmit={handleSubmit}>
         {Object.keys(formData).map((key) => (
           <div className="form-group" key={key}>
             <label htmlFor={key}>{key.replace(/_/g, ' ').toUpperCase()}:</label>
             <input
-              type={['InepCode', 'contact', 'employees', 'teachers', 'classrooms', 'students_quantity', 'libraries', 'laboratories'].includes(key) ? 'number' : 'text'}
+              type={key === 'InepCode' || key === 'contact' || key === 'employees' || key === 'teachers' || key === 'classrooms' || key === 'students_quantity' || key === 'libraries' || key === 'laboratories' ? 'number' : 'text'}
               id={key}
               value={formData[key]}
               onChange={handleChange}
