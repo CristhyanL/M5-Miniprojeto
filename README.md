@@ -13,6 +13,10 @@ Este projeto é voltado para:
 - Gestores de Recursos: Que precisam avaliar e distribuir recursos entre escolas com base em dados específicos.
 - Desenvolvedores: Interessados em aprender sobre integração de APIs com React e boas práticas de desenvolvimento de componentes.
 
+## LinkedIn
+Fiz um post no LinkedIn sobre essa publicação. Compartilhe e curta!
+https://www.linkedin.com/posts/cristhyanlima_estou-animado-para-compartilhar-meu-mais-activity-7243829369712852992-jDjx?utm_source=share&utm_medium=member_desktop
+
 ## Instalação
 
 Instale o projeto com npm
