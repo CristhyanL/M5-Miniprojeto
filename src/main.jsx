@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './components/App/App';  // Verifique se o caminho está correto
-import './styles/global.css';  // Estilos globais
-import './components/App/App.css';  // Estilos específicos do App
+import App from './components/App/App';  
+import './styles/global.css';  
+import './components/App/App.css'; 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

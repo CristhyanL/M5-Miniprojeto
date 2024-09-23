@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './AddFeatureForm.css'; // Para estilos específicos
-import Alert from '../Alert/Alert.jsx'; // Importar o componente de alerta
+import './AddFeatureForm.css'; 
+import Alert from '../Alert/Alert.jsx'; 
 
 const AddFeatureForm = ({ onAdd }) => {
   const [formData, setFormData] = useState({
@@ -21,7 +21,7 @@ const AddFeatureForm = ({ onAdd }) => {
   });
   
   const [error, setError] = useState(null);
-  const [successMessage, setSuccessMessage] = useState(null); // Estado para mensagem de sucesso
+  const [successMessage, setSuccessMessage] = useState(null); 
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -34,13 +34,11 @@ const AddFeatureForm = ({ onAdd }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Verificações adicionais
     if (Object.values(formData).some(value => value === '')) {
       setError('Todos os campos são obrigatórios');
       return;
     }
 
-    // Validar se campos numéricos contêm apenas números
     const numberFields = [
       'InepCode', 'contact', 'employees', 'teachers', 
       'classrooms', 'students_quantity', 'libraries', 
@@ -52,15 +50,13 @@ const AddFeatureForm = ({ onAdd }) => {
       return;
     }
 
-    // Validar URL
     try {
-      new URL(formData.imageUrl); // Tenta criar um objeto URL para verificar se é uma URL válida
+      new URL(formData.imageUrl);
     } catch (_) {
       setError('URL da imagem inválida');
       return;
     }
 
-    // Preparar dados para envio
     const payload = {
       name: formData.name,
       InepCode: Number(formData.InepCode),
@@ -92,10 +88,9 @@ const AddFeatureForm = ({ onAdd }) => {
       }
 
       const newFeature = await response.json();
-      onAdd(newFeature); // Notificar o componente pai que um novo item foi adicionado
+      onAdd(newFeature); 
       setSuccessMessage(`Obrigado por adicionar uma nova escola à nossa API! Você pode ver esse registro clicando no botão: ${newFeature.name || 'Escolas(API)'} no topo da página. Agradecemos sua contribuição`);
-      
-      // Resetar o formulário após o sucesso
+
       setFormData({
         name: '',
         InepCode: '',
@@ -122,10 +117,8 @@ const AddFeatureForm = ({ onAdd }) => {
     <div className="add-feature-form">
       <h2>Adicionar Escola</h2>
       
-      {/* Exibir alerta de erro, se houver */}
       <Alert message={error} onClose={() => setError(null)} />
       
-      {/* Exibir alerta de sucesso, se houver */}
       <Alert message={successMessage} onClose={() => setSuccessMessage(null)} />
 
       <form onSubmit={handleSubmit}>

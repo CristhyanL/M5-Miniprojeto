@@ -1,5 +1,5 @@
 import React from 'react';
-import './Alert.css'; // Estilos específicos para o alerta
+import './Alert.css';
 
 const Alert = ({ message, onClose }) => {
   if (!message) return null;

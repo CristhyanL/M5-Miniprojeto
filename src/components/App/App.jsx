@@ -29,7 +29,7 @@ const App = () => {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      await refetch(); // Recarregar os dados após adicionar um novo recurso
+      await refetch();
     } catch (err) {
       console.error('Erro ao adicionar dados:', err);
     }
