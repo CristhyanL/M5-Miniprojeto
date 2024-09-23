@@ -4,7 +4,7 @@ import './Features.css';
 const Features = ({ featuresData }) => {
   // Certifique-se de que os dados são um array
   if (!Array.isArray(featuresData)) {
-    return <p>Seus registros aparecerão aqui</p>;
+    return <p></p>;
   }
 
   // Verifique se há dados para exibir

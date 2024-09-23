@@ -12,3 +12,13 @@
     margin-bottom: 20px;
     font-size: 1.2rem;
 }
+
+li{
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 5px;
+}
+
+.rule{
+    padding: 5px;
+}
