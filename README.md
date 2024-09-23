@@ -44,6 +44,7 @@ Isso irá iniciar a aplicação em http://localhost:5173. Você pode acessar a a
 Certifique-se de que o servidor da API está rodando na URL http://localhost:2727.
 A API deve fornecer os endpoints necessários para listar 
 (GET http://localhost:2727/schools) e adicionar (POST http://localhost:2727/createSchool) escolas.
+Além disso, é importante saber que a API foi desenvolvida por mim anteriormente. E você pode acessar o repositório dela nesse link: https://github.com/CristhyanL/M4-MINIPROJETO
 
 ## Contribuindo
 
