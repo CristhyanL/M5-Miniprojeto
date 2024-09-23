@@ -1,0 +1,36 @@
+.footer {
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+  background-color: var(--footer-bg-color);
+  color: var(--footer-text-color);
+}
+
+.social {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.social li {
+  margin: 0 5px;
+}
+
+.redes {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
+
+.cris {
+  margin-top: 5px;
+  font-size: 0.8rem;
+}
