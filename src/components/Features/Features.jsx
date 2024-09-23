@@ -44,7 +44,11 @@ const Features = ({ featuresData }) => {
             <br />
             <strong>Banheiro Acessível:</strong> {feature.accessible_bathroom || 'Sem dados'}
             <br />
-            <strong>Imagem:</strong> {feature.imageUrl ? <img src={feature.imageUrl} alt="Imagem da Escola" className="school-image" /> : 'Sem imagem'}
+            {feature.imageUrl ? (
+              <img src={feature.imageUrl} alt="Imagem da Escola" className="school-image" />
+            ) : (
+              <span>Sem imagem:</span>
+            )} 
           </li>
         ))}
       </ul>

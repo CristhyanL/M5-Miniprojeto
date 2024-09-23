@@ -8,22 +8,20 @@ import useFetch from '../../hooks/useFetch';
 import './App.css';
 
 const App = () => {
-  const { data, loading, error, refetch } = useFetch('http://localhost:2727/schools');
-  const [features, setFeatures] = useState([]);
+  const { data: features, loading, error, refetch } = useFetch('http://localhost:2727/schools');
+  const [newFeatures, setNewFeatures] = useState([]);
 
   useEffect(() => {
-    if (data) {
-      setFeatures(data);
+    if (features) {
+      setNewFeatures(features);
     }
-  }, [data]);
+  }, [features]);
 
   const handleAddFeature = async (newFeature) => {
     try {
       const response = await fetch('http://localhost:2727/createSchool', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newFeature),
       });
 
@@ -37,15 +35,18 @@ const App = () => {
     }
   };
 
-  if (loading) return <p>Carregando...</p>;
-  if (error) return <p>{error}</p>;
-
   return (
     <div className="App">
       <Header />
       <MainSection />
-      <AddFeatureForm onAdd={handleAddFeature} />
-      <Features featuresData={features} />
+      {loading && <p>Carregando...</p>}
+      {error && <p>{error}</p>}
+      {!loading && !error && (
+        <>
+        <AddFeatureForm onAdd={handleAddFeature} />
+        <Features featuresData={newFeatures} />
+        </>
+      )}
       <Footer />
     </div>
   );

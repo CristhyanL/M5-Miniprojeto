@@ -14,8 +14,14 @@ root.render(
 const toggleButton = document.getElementById('theme-toggle');
 const bodyElement = document.body;
 
-toggleButton.addEventListener('click', () => {
-  bodyElement.classList.toggle('light-theme');
+document.addEventListener('DOMContentLoaded', () => {
+  const someElement = document.querySelector('#someElement');
+  
+  if (someElement) {
+    someElement.addEventListener('click', () => {
+      console.log('Elemento clicado!');
+    });
+  }
 });
 
 
