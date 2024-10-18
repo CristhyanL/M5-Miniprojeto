@@ -13,6 +13,10 @@ Este projeto é voltado para:
 - Gestores de Recursos: Que precisam avaliar e distribuir recursos entre escolas com base em dados específicos.
 - Desenvolvedores: Interessados em aprender sobre integração de APIs com React e boas práticas de desenvolvimento de componentes.
 
+## LinkedIn
+Fiz um post no LinkedIn sobre essa publicação. Compartilhe e curta!
+https://www.linkedin.com/posts/cristhyanlima_estou-animado-para-compartilhar-meu-mais-activity-7243829369712852992-jDjx?utm_source=share&utm_medium=member_desktop
+
 ## Instalação
 
 Instale o projeto com npm
@@ -40,6 +44,7 @@ Isso irá iniciar a aplicação em http://localhost:5173. Você pode acessar a a
 Certifique-se de que o servidor da API está rodando na URL http://localhost:2727.
 A API deve fornecer os endpoints necessários para listar 
 (GET http://localhost:2727/schools) e adicionar (POST http://localhost:2727/createSchool) escolas.
+Além disso, é importante saber que a API foi desenvolvida por mim anteriormente. E você pode acessar o repositório dela nesse link: https://github.com/CristhyanL/M4-MINIPROJETO
 
 ## Contribuindo
 
