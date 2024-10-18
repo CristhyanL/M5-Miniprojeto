@@ -26,15 +26,15 @@ root.render(
   </React.StrictMode>
 );
 
-// const toggleButton = document.getElementById('theme-toggle');
-// const bodyElement = document.body;
+const toggleButton = document.getElementById('theme-toggle');
+const bodyElement = document.body;
 
-// document.addEventListener('DOMContentLoaded', () => {
-//   const someElement = document.querySelector('#someElement');
+document.addEventListener('DOMContentLoaded', () => {
+  const someElement = document.querySelector('#someElement');
   
-//   if (someElement) {
-//     someElement.addEventListener('click', () => {
-//       console.log('Elemento clicado!');
-//     });
-//   }
-// });
+  if (someElement) {
+    someElement.addEventListener('click', () => {
+      console.log('Elemento clicado!');
+    });
+  }
+});
