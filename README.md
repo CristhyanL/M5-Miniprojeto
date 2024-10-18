@@ -2,27 +2,13 @@
 
 Esse projeto é uma aplicação web desenvolvida com React e Vite que permite a visualização e gerenciamento de informações sobre escolas. A aplicação consome dados de uma API para listar e adicionar escolas, fornecendo uma interface intuitiva para visualizar detalhes das instituições de ensino, como nome, código INEP, endereço, e mais.
 
-## Funcionalidades
-- Visualização de Escolas: Mostra uma lista de escolas registradas na API, com detalhes como nome, endereço, código INEP, número de funcionários e alunos, entre outros.
-- Adição de Novas Escolas: Permite que usuários adicionem novas escolas através de um formulário, enviando os dados para a API e atualizando a lista de escolas exibida.
-- Alertas: Exibe mensagens de alerta para notificar os usuários sobre erros ou confirmações de ações.
-
-## Publico Alvo
-Este projeto é voltado para:
-
-- Gestores de Recursos: Que precisam avaliar e distribuir recursos entre escolas com base em dados específicos.
-- Desenvolvedores: Interessados em aprender sobre integração de APIs com React e boas práticas de desenvolvimento de componentes.
-
-## LinkedIn
-Fiz um post no LinkedIn sobre essa publicação. Compartilhe e curta!
-https://www.linkedin.com/posts/cristhyanlima_estou-animado-para-compartilhar-meu-mais-activity-7243829369712852992-jDjx?utm_source=share&utm_medium=member_desktop
-
 ## Instalação
 
 Instale o projeto com npm
-Clone o Repositório
+Clone os Repositórios:
 ```bash
 git clone https://github.com/CristhyanL/M5-Miniprojeto
+git clone https://github.com/CristhyanL/M4-MINIPROJETO
 ```
 ```
 cd M5-Miniprojeto
@@ -38,6 +24,21 @@ Inicie o Servidor de Desenvolvimento
 npm run dev
 ```
 Isso irá iniciar a aplicação em http://localhost:5173. Você pode acessar a aplicação no navegador e começar a interagir com ela.
+
+## Funcionalidades
+- Visualização de Escolas: Mostra uma lista de escolas registradas na API, com detalhes como nome, endereço, código INEP, número de funcionários e alunos, entre outros.
+- Adição de Novas Escolas: Permite que usuários adicionem novas escolas através de um formulário, enviando os dados para a API e atualizando a lista de escolas exibida.
+- Alertas: Exibe mensagens de alerta para notificar os usuários sobre erros ou confirmações de ações.
+
+## Publico Alvo
+Este projeto é voltado para:
+
+- Gestores de Recursos: Que precisam avaliar e distribuir recursos entre escolas com base em dados específicos.
+- Desenvolvedores: Interessados em aprender sobre integração de APIs com React e boas práticas de desenvolvimento de componentes.
+
+## LinkedIn
+Fiz um post no LinkedIn sobre essa publicação. Compartilhe e curta!
+https://www.linkedin.com/posts/cristhyanlima_estou-animado-para-compartilhar-meu-mais-activity-7243829369712852992-jDjx?utm_source=share&utm_medium=member_desktop
 
 ## Configurações da API
 
